@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import apiUrl from '../../apiConfig.js'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import LocationMap from './LocationMap.js'
 
 const BuskCreate = props => {
   const [busk, setBusk] = useState({ title: '', description: '', longitude: '', latitude: '', category: '' })
@@ -9,6 +10,14 @@ const BuskCreate = props => {
   const handleChange = event => {
     event.persist()
     setBusk(busk => ({ ...busk, [event.target.name]: event.target.value }))
+  }
+  const handleLongitudeChange = value => {
+    console.log('value', value)
+    setBusk(busk => ({ ...busk, 'longitude': value }))
+  }
+  const handleLatitudeChange = value => {
+    console.log('value', value)
+    setBusk(busk => ({ ...busk, 'latitude': value }))
   }
 
   const handleSubmit = event => {
@@ -68,6 +77,10 @@ const BuskCreate = props => {
         onChange={handleChange}
       />
       <button type="submit">Submit</button>
+      <LocationMap
+        handleLongitudeChange={handleLongitudeChange}
+        handleLatitudeChange={handleLatitudeChange}
+      />
     </form>
   )
 }

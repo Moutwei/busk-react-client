@@ -4,6 +4,7 @@ import apiUrl from '../../apiConfig.js'
 import { Redirect, withRouter } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
+import LocationMapShow from './LocationMapShow.js'
 
 const Busk = props => {
   const [busk, setBusk] = useState(null)
@@ -56,7 +57,6 @@ const Busk = props => {
       { pathname: '/home', state: { msg: 'Busk succesfully deleted!' } }
     } />
   }
-
   return (
     <div>
       <h1>{busk.title}</h1>
@@ -64,6 +64,7 @@ const Busk = props => {
       <h4>Longitude: {busk.longitude} Latitude {busk.latitude}</h4>
       <h4>Category: {busk.category} </h4>
       {showOwnersButtons()}
+      <LocationMapShow long={busk.longitude} lat={busk.latitude}/>
     </div>
   )
 }

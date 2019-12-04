@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import apiUrl from '../../apiConfig.js'
 import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 
 const BuskCreate = props => {
   const [busk, setBusk] = useState({ title: '', description: '', longitude: '', latitude: '', category: '' })
@@ -12,7 +13,6 @@ const BuskCreate = props => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    console.log(busk)
     axios({
       url: `${apiUrl}/busks`,
       method: 'POST',
@@ -21,8 +21,8 @@ const BuskCreate = props => {
     })
       // .then(res => setCreatedBookId(res.data.busk._id))
       // another way to re route to another url
-      // .then(res => props.history.push(`/busks/${res.data.busk._id}`))
-      .then(() => props.alert({ heading: 'CREATED', message: 'HOMIE', variant: 'success' }))
+      .then(res => props.history.push(`/busks/${res.data.busk._id}`))
+      .then(() => props.alert({ heading: 'Created Busk', message: 'Successful', variant: 'success' }))
       .catch(console.error)
   }
 
@@ -72,4 +72,4 @@ const BuskCreate = props => {
   )
 }
 
-export default BuskCreate
+export default withRouter(BuskCreate)

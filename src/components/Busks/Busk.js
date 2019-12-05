@@ -48,7 +48,7 @@ const Busk = props => {
   }
 
   if (busk === null) {
-    return <p> Loading... </p>
+    return <h1 className='fancy-h1'> Loading... </h1>
   }
 
   if (deleted) {

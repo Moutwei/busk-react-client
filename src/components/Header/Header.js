@@ -10,30 +10,37 @@ const authenticatedOptions = (
   </Fragment>
 )
 
+const style = {
+  color: 'black',
+  backgroundColor: 'grey'
+}
+
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
-    <Nav.Link href="#sign-in">Sign In</Nav.Link>
+    <Nav.Link style={style} href="#sign-up">Sign Up</Nav.Link>
+    <Nav.Link style={style} href="#sign-in">Sign In</Nav.Link>
   </Fragment>
 )
 
 const alwaysOptions = (
   <Fragment>
-    <Nav.Link href="#/home">Home</Nav.Link>
+    <Nav.Link style={style} href="#/home">Show All Busks</Nav.Link>
   </Fragment>
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar bg="dark" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      busk-react-client
+      <img className='home-logo' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVAtE_1TUOQwyrtEevDrN32sg3ievIjVhvMUknsfXBlyKPMwBmXA&s' alt='logo'/>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="ml-auto">
+      <Nav variant='tabs' className="mr-auto">
         { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
-        { alwaysOptions }
         { user ? authenticatedOptions : unauthenticatedOptions }
+      </Nav>
+      <Nav variant='tabs' className='ml-auto'>
+        { alwaysOptions }
       </Nav>
     </Navbar.Collapse>
   </Navbar>

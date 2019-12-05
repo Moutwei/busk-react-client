@@ -1,8 +1,81 @@
 @import '~bootstrap/scss/bootstrap';
 
-.marker {
-  color: blue;
-  border-width: thick;
-  border-color: blue;
-  position: absolute;
+.show-marker {
+  position: relative;
+  right: 2vh;
+  top: 1vh;
+  width: 4vh;
+  height: 4vh;
+}
+
+.create-marker {
+  position: relative;
+  left: 20vw;
+  top: 17vh;
+}
+
+.map {
+  margin-top: 5vh;
+}
+
+html, body {
+  background-color: grey;
+}
+
+.col-7 {
+  padding-left: 0;
+}
+
+.fancy-h1 {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  color: black;
+  border-style: solid;
+  border-color: #5B5B5B;
+  border-bottom: grey;
+  border-right: grey;
+  padding: 1vh;
+  padding-left: 2vh;
+}
+
+.cool-h5 {
+  color: black;
+  border-style: solid;
+  border-color: #5B5B5B;
+  border-bottom: grey;
+  border-right: grey;
+  padding: 1vh;
+}
+
+p {
+  padding: 1vh;
+  padding-left: 2vh;
+}
+
+.update-help {
+  margin-top: 6vh;
+  color: #3D3D3D;
+}
+
+.busk-info {
+  margin-top: 8vh;
+
+}
+
+.info-section {
+  padding: 2vh;
+}
+
+.home-logo {
+  width: 2vw;
+  height: 3vh;
+}
+
+.list-group-item {
+  background-color: #5B5B5B;
+  color: black;
+  &:hover {
+    color: white;
+    background-color: #3D3D3D;
+  }
 }

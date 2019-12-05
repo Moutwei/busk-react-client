@@ -3,6 +3,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig.js'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { withRouter } from 'react-router-dom'
+import Address from './Address.js'
 
 const Busks = props => {
   const [busks, setBusks] = useState([])
@@ -11,7 +12,6 @@ const Busks = props => {
   // GET request by defaut
     axios(`${apiUrl}/busks`)
       .then(res => { setBusks(res.data.busks) })
-      .then(() => props.alert({ heading: 'Busks', message: 'Loaded Successfully', variant: 'success' }))
       .catch(console.error)
   }, [])
 
@@ -25,15 +25,21 @@ const Busks = props => {
   const busksJsx = busks.map(busk => (
   // <Link to={`/busks/${busk._id}`} key={busk._id} className='list-group-item'>{busk.title}</Link>
     <ListGroup.Item key={busk._id} as={'a'} href={`#/busks/${busk._id}`}>
-      <h4>{busk.title}</h4>
-      <span> posted by: {busk.owner.email} </span>
-      <p> longitude: {busk.longitude} latitude: {busk.latitude}</p>
-      {sayEdited(busk._id)}
+      <div className='row'>
+        <div className='col-1'>
+          <p>{busk.owner.email} </p>
+        </div>
+        <div className='col-11'>
+          <h5>{busk.title}</h5>
+          <Address long={busk.longitude} lat={busk.latitude}/>
+          {sayEdited(busk._id)}
+        </div>
+      </div>
     </ListGroup.Item>
   ))
   return (
     <div>
-      <h1>BUSKS</h1>
+      <h1 className="fancy-h1">Busks</h1>
       <ListGroup>
         {busksJsx}
       </ListGroup>

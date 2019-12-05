@@ -12,6 +12,7 @@ import BuskCreate from '../Busks/BuskCreate.js'
 import Busks from '../Busks/Busks.js'
 import Busk from '../Busks/Busk.js'
 import BuskUpdate from '../Busks/BuskUpdate.js'
+import HashHome from '../Busks/HashHome.js'
 
 class App extends Component {
   constructor () {
@@ -51,6 +52,9 @@ class App extends Component {
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
+          )} />
+          <Route exact path='/' render={() => (
+            <HashHome />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut alert={this.alert} clearUser={this.clearUser} user={user} />

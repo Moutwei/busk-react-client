@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import apiUrl from '../../apiConfig.js'
 import { Redirect, withRouter } from 'react-router-dom'
-import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 import LocationMapShow from './LocationMapShow.js'
+import Address from './Address.js'
 
 const Busk = props => {
   const [busk, setBusk] = useState(null)
@@ -29,20 +29,19 @@ const Busk = props => {
       headers: { Authorization: `Bearer ${props.user.token}` }
     })
       .then(() => setDeleted(true))
-      .then(() => props.alert({ heading: 'DELETED', message: 'Successful!', variant: 'success' }))
       .catch(console.error)
   }
 
   // checks if signed in && checks if user id's match
   // and gets rid of buttons when updating.
   const showOwnersButtons = () => {
-    console.log(props)
-    console.log(busk)
+    // console.log(props)
+    // console.log(busk)
     if ((props.user !== null) && (props.user._id === busk.owner) && (props.location.pathname !== `/busks/${props.match.params.id}/update-busk`)) {
       return (
-        <div>
-          <Nav.Link busk={busk} href={`#busks/${props.match.params.id}/update-busk`}>Update Busk</Nav.Link>
-          <Button variant="danger" onClick={destroy} type="submit"> Delete </Button>
+        <div className='row'>
+          <Button className='col-6' variant='info' busk={busk} href={`#busks/${props.match.params.id}/update-busk`}>Update Busk</Button>
+          <Button className='col-6' variant="danger" onClick={destroy} type="submit"> Delete </Button>
         </div>
       )
     }
@@ -57,14 +56,27 @@ const Busk = props => {
       { pathname: '/home', state: { msg: 'Busk succesfully deleted!' } }
     } />
   }
+
   return (
-    <div>
-      <h1>{busk.title}</h1>
-      <h4>Description: {busk.description}</h4>
-      <h4>Longitude: {busk.longitude} Latitude {busk.latitude}</h4>
-      <h4>Category: {busk.category} </h4>
-      {showOwnersButtons()}
-      <LocationMapShow long={busk.longitude} lat={busk.latitude}/>
+    <div className='busk-info'>
+      <div className='row'>
+        <div className='col-6'>
+          <h1 className='fancy-h1'>{busk.title}</h1>
+          <div className='info-section'>
+            <h5 className='cool-h5'>Description</h5>
+            <p>{busk.description}</p>
+            <h5 className='cool-h5'>Category</h5>
+            <p>{busk.category}</p>
+            <h5 className='cool-h5'>Address</h5>
+            <Address long={busk.longitude} lat={busk.latitude}/>
+            {showOwnersButtons()}
+          </div>
+        </div>
+        <div className='col-5'>
+          <LocationMapShow long={busk.longitude} lat={busk.latitude}/>
+          <p className='update-help'>That pokeball is where this event will be!</p>
+        </div>
+      </div>
     </div>
   )
 }

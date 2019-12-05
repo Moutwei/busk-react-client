@@ -49,15 +49,6 @@ class LocationMap extends Component {
       this.props.handleLatitudeChange(this.state.viewport.latitude)
       this.props.handleLongitudeChange(this.state.viewport.longitude)
     }
-    // if ((this.props.lat && this.props.long) !== undefined) {
-    //   this.setState({
-    //     viewport: {
-    //       latitude: parseFloat(this.props.lat),
-    //       longitude: parseFloat(this.props.long)
-    //     }
-    //   })
-    //   console.log('my new state', this.state)
-    // }
   }
 
   // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
@@ -84,9 +75,9 @@ class LocationMap extends Component {
   }
   render () {
     const { viewport, searchResultLayer } = this.state
-    console.log('latitude,', this.state.viewport.latitude)
-    console.log('longitude,', this.state.viewport.longitude)
-    console.log('this.props', this.props)
+    // console.log('latitude,', this.state.viewport.latitude)
+    // console.log('longitude,', this.state.viewport.longitude)
+    // console.log('this.props', this.props)
 
     return (
       <Fragment>
@@ -103,7 +94,9 @@ class LocationMap extends Component {
             onViewportChange={this.handleGeocoderViewportChange}
             mapboxApiAccessToken={MAPBOX_TOKEN}
             position="top-left"
+            className='geo-box'
           />
+          <img className='create-marker' src="https://www.animatedimages.org/data/media/111/animated-arrow-image-0275.gif" alt='map marker'/>
           <DeckGL {...viewport} layers={[searchResultLayer]} />
         </MapGL>
       </Fragment>

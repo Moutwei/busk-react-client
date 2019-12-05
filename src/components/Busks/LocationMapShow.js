@@ -1,8 +1,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css'
 import React, { Component, Fragment } from 'react'
-import MapGL from 'react-map-gl'
+import MapGL, { Marker } from 'react-map-gl'
 import DeckGL, { GeoJsonLayer } from 'deck.gl'
-import Geocoder from 'react-map-gl-geocoder'
 import { withRouter } from 'react-router-dom'
 
 // Please be a decent human and don't abuse my Mapbox API token.
@@ -18,7 +17,7 @@ class LocationMapShow extends Component {
       height: 400,
       latitude: parseFloat(this.props.lat),
       longitude: parseFloat(this.props.long),
-      zoom: 16
+      zoom: 17
     },
     searchResultLayer: null
   }
@@ -42,6 +41,7 @@ class LocationMapShow extends Component {
   }
 
   handleViewportChange = viewport => {
+    console.log('viewport look', viewport)
     this.setState({
       viewport: { ...this.state.viewport, ...viewport }
     })
@@ -49,15 +49,6 @@ class LocationMapShow extends Component {
       this.props.handleLatitudeChange(this.state.viewport.latitude)
       this.props.handleLongitudeChange(this.state.viewport.longitude)
     }
-    // if ((this.props.lat && this.props.long) !== undefined) {
-    //   this.setState({
-    //     viewport: {
-    //       latitude: parseFloat(this.props.lat),
-    //       longitude: parseFloat(this.props.long)
-    //     }
-    //   })
-    //   console.log('my new state', this.state)
-    // }
   }
 
   // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
@@ -81,29 +72,26 @@ class LocationMapShow extends Component {
         pointRadiusMaxPixels: 10
       })
     })
+    console.log('search result layer', this.state.searchResultLayer)
   }
   render () {
     const { viewport, searchResultLayer } = this.state
-    console.log('latitude,', this.state.viewport.latitude)
-    console.log('longitude,', this.state.viewport.longitude)
-    console.log('this.props', this.props)
+    // console.log('latitude,', this.state.viewport.latitude)
+    // console.log('longitude,', this.state.viewport.longitude)
+    // console.log('this.props', this.props)
 
     return (
       <Fragment>
         <MapGL
           ref={this.mapRef}
           {...viewport}
-          onViewportChange={this.handleViewportChange}
           mapboxApiAccessToken={MAPBOX_TOKEN}
           mapStyle={'mapbox://styles/phreekiekambo/ck3sb4yg71mub1cnul6x1txhg'}
+          className='map'
         >
-          <Geocoder
-            mapRef={this.mapRef}
-            onResult={this.handleOnResult}
-            onViewportChange={this.handleGeocoderViewportChange}
-            mapboxApiAccessToken={MAPBOX_TOKEN}
-            position="top-left"
-          />
+          <Marker className='marker' key={this.props.id} longitude={parseFloat(this.props.long)} latitude={parseFloat(this.props.lat)}>
+            <img className='show-marker' src="https://i.imgur.com/YoBlqpE.png" alt='map marker'/>
+          </Marker>
           <DeckGL {...viewport} layers={[searchResultLayer]} />
         </MapGL>
       </Fragment>

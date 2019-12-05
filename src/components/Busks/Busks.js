@@ -37,6 +37,11 @@ const Busks = props => {
       </div>
     </ListGroup.Item>
   ))
+
+  if (busks === null) {
+    return <h1 className='fancy-h1'> Loading Busks... </h1>
+  }
+
   return (
     <div>
       <h1 className="fancy-h1">Busks</h1>

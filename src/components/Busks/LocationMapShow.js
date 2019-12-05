@@ -18,7 +18,7 @@ class LocationMapShow extends Component {
       height: 400,
       latitude: parseFloat(this.props.lat),
       longitude: parseFloat(this.props.long),
-      zoom: 8
+      zoom: 16
     },
     searchResultLayer: null
   }
@@ -95,6 +95,7 @@ class LocationMapShow extends Component {
           {...viewport}
           onViewportChange={this.handleViewportChange}
           mapboxApiAccessToken={MAPBOX_TOKEN}
+          mapStyle={'mapbox://styles/phreekiekambo/ck3sb4yg71mub1cnul6x1txhg'}
         >
           <Geocoder
             mapRef={this.mapRef}

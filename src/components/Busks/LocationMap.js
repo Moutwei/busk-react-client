@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 
 // Please be a decent human and don't abuse my Mapbox API token.
 // If you fork this sandbox, replace my API token with your own.
-// Ways to set Mapbox token: https://uber.github.io/react-map-gl/#/Documentation/getting-started/about-mapbox-tokens
+// Ways to set Mapbox token: https://uber.github.io/react-map-gl/#/Documentation/getting-started/about-mapbox-tokens 42.36050000030007
 const MAPBOX_TOKEN =
   'pk.eyJ1IjoicGhyZWVraWVrYW1ibyIsImEiOiJjazNyb3JyNngwYTZuM2VvMHJ1M3NmMnZ2In0.E7o6hpimLdRzfmUDdxT-eA'
 
@@ -16,9 +16,9 @@ class LocationMap extends Component {
     viewport: {
       width: 400,
       height: 400,
-      latitude: 37.7577,
-      longitude: -122.4376,
-      zoom: 8
+      latitude: 42.36050000030007,
+      longitude: -71.05959915454186,
+      zoom: 12
     },
     searchResultLayer: null
   }
@@ -95,6 +95,7 @@ class LocationMap extends Component {
           {...viewport}
           onViewportChange={this.handleViewportChange}
           mapboxApiAccessToken={MAPBOX_TOKEN}
+          mapStyle={'mapbox://styles/phreekiekambo/ck3sb4yg71mub1cnul6x1txhg'}
         >
           <Geocoder
             mapRef={this.mapRef}

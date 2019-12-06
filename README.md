@@ -52,9 +52,9 @@ well.
 
 ## Wiredrames, User Stories, and ERD Links...
 
-[Wireframes](wireframes.jpg)
-[User Stories](userstories.jpg)
-[ERD](erd.jpg)
+![Wireframes](wireframes.jpg)
+![User Stories](userstories.jpg)
+![ERD](erd.jpg)
 
 ## Application in Action
 ![Screenshot](screenshot.png)

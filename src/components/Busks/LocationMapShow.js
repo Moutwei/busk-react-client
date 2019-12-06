@@ -41,7 +41,7 @@ class LocationMapShow extends Component {
   }
 
   handleViewportChange = viewport => {
-    console.log('viewport look', viewport)
+    // console.log('viewport look', viewport)
     this.setState({
       viewport: { ...this.state.viewport, ...viewport }
     })
@@ -72,7 +72,7 @@ class LocationMapShow extends Component {
         pointRadiusMaxPixels: 10
       })
     })
-    console.log('search result layer', this.state.searchResultLayer)
+    // console.log('search result layer', this.state.searchResultLayer)
   }
   render () {
     const { viewport, searchResultLayer } = this.state

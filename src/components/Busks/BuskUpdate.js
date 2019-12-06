@@ -47,7 +47,7 @@ const BuskUpdate = props => {
   }
   return (
     <Fragment>
-      <div className='row'>
+      <div className='row busk-info'>
         <div className='col-6'>
           <form onSubmit={handleSubmit}>
             <h5 className='cool-h5'>Title</h5>
@@ -65,7 +65,7 @@ const BuskUpdate = props => {
               value={busk.description}
               name="description"
               onChange={handleChange}
-              className="form-control"
+              className="form-control big"
             />
             <p>Suggestion: Who/What/When/Where/Why</p>
             <h5 className='cool-h5'>Category</h5>

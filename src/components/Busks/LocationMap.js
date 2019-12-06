@@ -87,6 +87,7 @@ class LocationMap extends Component {
           onViewportChange={this.handleViewportChange}
           mapboxApiAccessToken={MAPBOX_TOKEN}
           mapStyle={'mapbox://styles/phreekiekambo/ck3sb4yg71mub1cnul6x1txhg'}
+          className='map'
         >
           <Geocoder
             mapRef={this.mapRef}
@@ -94,7 +95,6 @@ class LocationMap extends Component {
             onViewportChange={this.handleGeocoderViewportChange}
             mapboxApiAccessToken={MAPBOX_TOKEN}
             position="top-left"
-            className='geo-box'
           />
           <img className='create-marker' src="https://www.animatedimages.org/data/media/111/animated-arrow-image-0275.gif" alt='map marker'/>
           <DeckGL {...viewport} layers={[searchResultLayer]} />

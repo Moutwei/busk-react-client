@@ -2,18 +2,24 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 
-const authenticatedOptions = (
-  <Fragment>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
-    <Nav.Link href="#create-busk">Create Busk</Nav.Link>
-  </Fragment>
-)
-
 const style = {
   color: 'black',
   backgroundColor: 'grey'
 }
+
+const style2 = {
+  color: 'black',
+  backgroundColor: 'grey',
+  marginLeft: '1vw'
+}
+
+const authenticatedOptions = (
+  <Fragment>
+    <Nav.Link style={style} href="#change-password">Change Password</Nav.Link>
+    <Nav.Link style={style} href="#sign-out">Sign Out</Nav.Link>
+    <Nav.Link style={style2} href="#create-busk">Create Busk</Nav.Link>
+  </Fragment>
+)
 
 const unauthenticatedOptions = (
   <Fragment>

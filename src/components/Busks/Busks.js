@@ -26,10 +26,10 @@ const Busks = props => {
   // <Link to={`/busks/${busk._id}`} key={busk._id} className='list-group-item'>{busk.title}</Link>
     <ListGroup.Item key={busk._id} as={'a'} href={`#/busks/${busk._id}`}>
       <div className='row'>
-        <div className='col-1'>
+        <div className='col-3'>
           <p>{busk.owner.email} </p>
         </div>
-        <div className='col-11'>
+        <div className='col-9'>
           <h5>{busk.title}</h5>
           <Address long={busk.longitude} lat={busk.latitude}/>
           {sayEdited(busk._id)}

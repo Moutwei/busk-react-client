@@ -4,7 +4,7 @@ import axios from 'axios'
 const Address = props => {
   const [geoAddress, setGeoAddress] = useState(null)
   useEffect(() => {
-    axios(`https://api.mapbox.com/geocoding/v5/mapbox.places/${props.long},${props.lat}.json?access_token=pk.eyJ1IjoicGhyZWVraWVrYW1ibyIsImEiOiJjazNyb3JyNngwYTZuM2VvMHJ1M3NmMnZ2In0.E7o6hpimLdRzfmUDdxT-eA`)
+    axios(`https://api.mapbox.com/geocoding/v5/mapbox.places/${props.long},${props.lat}.json?access_token=${process.env.TOKEN}`)
       .then(res => setGeoAddress(res.data.features[0].place_name))
       .catch(console.error)
   }, [])
